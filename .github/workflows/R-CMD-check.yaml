@@ -42,3 +42,29 @@ jobs:
       - uses: r-lib/actions/check-r-package@v2
         with:
           upload-snapshots: true
+
+      - name: Annotate check logs on failure
+        if: failure()
+        shell: Rscript {0}
+        run: |
+          escape <- function(x) {
+            x <- gsub("%", "%25", x, fixed = TRUE)
+            x <- gsub("\r", "%0D", x, fixed = TRUE)
+            x <- gsub("\n", "%0A", x, fixed = TRUE)
+            x
+          }
+          files <- list.files(
+            ".",
+            pattern = "00(check[.]log|install[.]out)$",
+            recursive = TRUE,
+            full.names = TRUE
+          )
+          for (file in files) {
+            lines <- readLines(file, warn = FALSE)
+            text <- paste(c(file, tail(lines, 80L)), collapse = "\n")
+            cat(sprintf(
+              "::error title=%s::%s\n",
+              basename(file),
+              escape(text)
+            ))
+          }
