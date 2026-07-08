@@ -10,12 +10,8 @@
 #' @export
 rank_pareto <- function(x, ties_method = "average") {
   x <- .as_numeric_matrix(x)
-  n <- nrow(x)
-  out <- matrix(NA_real_, nrow = n, ncol = ncol(x), dimnames = dimnames(x))
-  for (j in seq_len(ncol(x))) {
-    ranks <- rank(x[, j], ties.method = ties_method)
-    out[, j] <- (n + 1) / (n + 1 - ranks)
-  }
+  out <- agca_rank_pareto_cpp(x, ties_method = ties_method)
+  dimnames(out) <- dimnames(x)
   out
 }
 
@@ -40,15 +36,16 @@ pareto_from_cdf <- function(x, cdf, eps = 1e-12) {
     stop("cdf must be a function or a list of one function per margin.", call. = FALSE)
   }
 
-  out <- matrix(NA_real_, nrow = nrow(x), ncol = ncol(x), dimnames = dimnames(x))
+  u_mat <- matrix(NA_real_, nrow = nrow(x), ncol = ncol(x), dimnames = dimnames(x))
   for (j in seq_len(ncol(x))) {
     u <- cdf[[j]](x[, j])
     if (length(u) != nrow(x) || anyNA(u) || any(!is.finite(u)) || any(u < 0 | u > 1)) {
       stop("Each CDF must return finite values in [0, 1].", call. = FALSE)
     }
-    u <- pmin(1 - eps, pmax(eps, u))
-    out[, j] <- 1 / (1 - u)
+    u_mat[, j] <- u
   }
+  out <- agca_cdf_to_pareto_cpp(u_mat, eps = eps)
+  dimnames(out) <- dimnames(x)
   out
 }
 

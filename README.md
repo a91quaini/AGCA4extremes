@@ -43,9 +43,9 @@ install.packages("AGCA4extremes")
 ```r
 library(AGCA4extremes)
 
-data(ff_portfolio_losses)
+data(agca_10d_simulation)
 
-x <- ff_portfolio_losses[, -1]
+x <- agca_10d_simulation[paste0("X", 1:10)]
 fit <- agca(x, k = 250, p = 5)
 
 fit
@@ -56,6 +56,64 @@ plot(fit, type = "variation")
 The default marginal transformation is rank-Pareto. Larger observations in
 each margin are treated as more extreme, so financial return data should be
 converted to losses before calling `agca()`.
+
+## Example Diagnostics
+
+The bundled `agca_10d_simulation` data set is generated from a 10-dimensional
+heavy-tailed design. Variables `X1`--`X8` share a low-dimensional extremal
+mechanism, while `X9` and `X10` contain independent Pareto sources that create
+near-axis extreme regimes.
+
+```r
+data(agca_10d_simulation)
+
+x <- agca_10d_simulation[paste0("X", 1:10)]
+fit <- agca(x, k = 500, p = 4, seed = 1)
+
+agca_rank_summary(fit)
+```
+
+Explained variation:
+
+```r
+plot(fit, type = "variation")
+```
+
+Scores for the first two anchored geodesic components:
+
+```r
+cols <- c(shared_low_rank = "#1B9E77", axis_9 = "#5B3A29", axis_10 = "#7570B3")
+plot(
+  fit$scores[, 1], fit$scores[, 2],
+  col = cols[agca_10d_simulation$regime[fit$tail$index]],
+  pch = 16,
+  xlab = "AGC1 score",
+  ylab = "AGC2 score"
+)
+legend("topright", legend = names(cols), col = cols, pch = 16, bty = "n")
+```
+
+Loadings:
+
+```r
+plot(fit, type = "loadings", p = 1)
+plot(fit, type = "loadings", p = 2)
+```
+
+Threshold and anchor diagnostics:
+
+```r
+threshold_stability(x, k = c(250, 350, 500, 750), p = 4)
+anchor_sensitivity(x, k = 500, p = 4)
+```
+
+Bootstrap uncertainty for rank summaries:
+
+```r
+boot <- bootstrap_agca(fit, B = 99, ranks = c(1, 2, 4), seed = 1)
+summary(boot)
+plot(boot, statistic = "variation_explained")
+```
 
 ## Main Functions
 

@@ -1,14 +1,15 @@
-#' Fama-French daily portfolio losses
+#' Simulated 10-dimensional AGCA example
 #'
-#' A transformed daily loss panel from the Kenneth R. French Data Library. The
-#' data contain 24 daily portfolio loss series formed from four 2-by-3
-#' portfolio-sort families: size and book-to-market, size and operating
-#' profitability, size and investment, and size and prior return. Losses are
-#' negative daily returns, measured in percent.
+#' A package-owned simulated heavy-tailed sample from the 10-dimensional design
+#' used in the AGCA paper. Variables `X1`--`X8` share a low-dimensional
+#' logistic-block extremal mechanism. Variables `X9` and `X10` contain
+#' independent Pareto sources, creating near-axis extreme regimes alongside the
+#' shared low-rank angular structure.
 #'
-#' @format A data frame with 15,833 rows and 25 columns. The first column is
-#' the trading date. The remaining 24 columns are daily loss series for the
-#' Fama-French portfolio sorts used as a package example.
-#' @source Kenneth R. French Data Library,
-#' \url{https://mba.tuck.dartmouth.edu/pages/faculty/ken.french/data_library.html}
-"ff_portfolio_losses"
+#' @format A data frame with 10,000 rows and 11 columns. Columns `X1`, ...,
+#' `X10` are positive heavy-tailed observations. Column `regime` is a latent
+#' factor identifying the dominant source for the observation: shared low-rank,
+#' axis 9, or axis 10.
+#' @source Simulated by `data-raw/simulate_data.R` using
+#' [simulate_agca_10d()].
+"agca_10d_simulation"

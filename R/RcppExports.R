@@ -29,3 +29,35 @@ agca_geodesic_distance_cpp <- function(x, y, normalize = TRUE) {
     .Call(`_AGCA4extremes_agca_geodesic_distance_cpp`, x, y, normalize)
 }
 
+agca_rank_pareto_cpp <- function(x, ties_method = "average") {
+    .Call(`_AGCA4extremes_agca_rank_pareto_cpp`, x, ties_method)
+}
+
+agca_cdf_to_pareto_cpp <- function(u, eps = 1e-12) {
+    .Call(`_AGCA4extremes_agca_cdf_to_pareto_cpp`, u, eps)
+}
+
+agca_tail_directions_cpp <- function(x, k, threshold, use_k) {
+    .Call(`_AGCA4extremes_agca_tail_directions_cpp`, x, k, threshold, use_k)
+}
+
+agca_decluster_runs_cpp <- function(x, k, threshold, use_k, run) {
+    .Call(`_AGCA4extremes_agca_decluster_runs_cpp`, x, k, threshold, use_k, run)
+}
+
+agca_principal_anchor_cpp <- function(g, normalize = TRUE) {
+    .Call(`_AGCA4extremes_agca_principal_anchor_cpp`, g, normalize)
+}
+
+agca_frechet_anchor_cpp <- function(g, normalize = TRUE, max_iter = 100L, tol = 1e-10) {
+    .Call(`_AGCA4extremes_agca_frechet_anchor_cpp`, g, normalize, max_iter, tol)
+}
+
+agca_bootstrap_cpp <- function(g, mu, p, B, ranks, fixed_anchor, anchor_type, anchor_vector) {
+    .Call(`_AGCA4extremes_agca_bootstrap_cpp`, g, mu, p, B, ranks, fixed_anchor, anchor_type, anchor_vector)
+}
+
+agca_functional_error_cpp <- function(g, anchor_coordinate, mu, scores, loadings, weights, ranks, power, cap) {
+    .Call(`_AGCA4extremes_agca_functional_error_cpp`, g, anchor_coordinate, mu, scores, loadings, weights, ranks, power, cap)
+}
+

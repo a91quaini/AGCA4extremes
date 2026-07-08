@@ -62,9 +62,9 @@ large-radius observations, resolves the anchor, and fits anchored geodesic
 components to the resulting angular directions.
 }
 \examples{
-data(ff_portfolio_losses)
-x <- ff_portfolio_losses[seq_len(500), -1]
-fit <- agca(x, k = 75, p = 3)
+data(agca_10d_simulation)
+x <- agca_10d_simulation[paste0("X", 1:10)]
+fit <- agca(x, k = 100, p = 3)
 fit
 agca_rank_summary(fit)
 }

@@ -8,6 +8,18 @@ test_that("rank_pareto returns finite Pareto scores", {
   expect_gt(z[3, 1], z[1, 1])
 })
 
+test_that("rank_pareto matches base rank for deterministic tie methods", {
+  x <- matrix(c(2, 2, 1, 4, 4, 3, 1, 1), ncol = 2)
+  for (method in c("average", "min", "max", "first", "last")) {
+    got <- rank_pareto(x, ties_method = method)
+    expected <- apply(x, 2L, function(z) {
+      r <- rank(z, ties.method = method)
+      (length(z) + 1) / (length(z) + 1 - r)
+    })
+    expect_equal(got, expected)
+  }
+})
+
 test_that("pareto_from_cdf accepts one CDF or a list of CDFs", {
   x <- matrix(c(0.1, 0.2, 0.3, 0.4), ncol = 2)
   z1 <- pareto_from_cdf(x, cdf = stats::pnorm)

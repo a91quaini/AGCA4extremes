@@ -76,27 +76,24 @@ angular_functional_error <- function(fit, weights, ranks = fit$p,
   if (is.null(portfolio_names)) {
     portfolio_names <- paste0("portfolio_", seq_len(nrow(weights)))
   }
-  original <- .bounded_positive_exposure(fit$g, weights, power = power, cap = cap)
+  core <- agca_functional_error_cpp(
+    fit$g,
+    fit$anchor_coordinate,
+    fit$mu,
+    fit$scores,
+    fit$loadings,
+    weights,
+    ranks,
+    power,
+    cap
+  )
 
-  out <- lapply(ranks, function(p) {
-    recon <- agca_reconstruct(fit, p = p)
-    reconstructed <- .bounded_positive_exposure(recon, weights, power = power, cap = cap)
-    data.frame(
-      rank = p,
-      portfolio = portfolio_names,
-      original = original,
-      reconstructed = reconstructed,
-      relative_error = reconstructed / original - 1,
-      row.names = NULL
-    )
-  })
-  do.call(rbind, out)
-}
-
-.bounded_positive_exposure <- function(g, weights, power, cap) {
-  exposure <- pmax(g %*% t(weights), 0)^power
-  if (is.finite(cap)) {
-    exposure <- pmin(exposure, cap)
-  }
-  colMeans(exposure)
+  data.frame(
+    rank = rep(ranks, each = nrow(weights)),
+    portfolio = rep(portfolio_names, times = length(ranks)),
+    original = rep(as.numeric(core$original), times = length(ranks)),
+    reconstructed = as.vector(t(core$reconstructed)),
+    relative_error = as.vector(t(core$relative_error)),
+    row.names = NULL
+  )
 }

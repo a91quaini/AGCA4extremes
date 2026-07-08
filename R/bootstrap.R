@@ -27,30 +27,30 @@ bootstrap_agca <- function(fit, B = 199L, ranks = NULL, fixed_anchor = TRUE,
     set.seed(seed)
   }
 
-  n <- nrow(fit$g)
-  records <- vector("list", B)
-  for (b in seq_len(B)) {
-    idx <- sample.int(n, size = n, replace = TRUE)
-    boot_anchor <- if (isTRUE(fixed_anchor)) fit$mu else anchor
-    boot_fit <- agca_fit_directions(
-      fit$g[idx, , drop = FALSE],
-      anchor = boot_anchor,
-      p = fit$p,
-      normalize = FALSE
-    )
-    risk <- agca_residual_risk(boot_fit, max_rank = max_rank)
-    ave <- c(0, agca_variation_explained(boot_fit))
-    records[[b]] <- data.frame(
-      replicate = b,
-      rank = ranks,
-      residual_risk = unname(risk[as.character(ranks)]),
-      variation_explained = unname(ave[ranks + 1L]),
-      row.names = NULL
-    )
+  if (isTRUE(fixed_anchor)) {
+    anchor_type <- "fixed"
+    anchor_vector <- numeric(0L)
+  } else if (is.character(anchor)) {
+    anchor_type <- match.arg(anchor, c("canonical", "frechet", "principal"))
+    anchor_vector <- numeric(0L)
+  } else if (is.numeric(anchor)) {
+    anchor_type <- "numeric"
+    anchor_vector <- .unit_vector(anchor, "anchor")
+  } else {
+    stop("anchor must be 'canonical', 'frechet', 'principal', or a numeric vector.", call. = FALSE)
   }
 
   out <- list(
-    replicates = do.call(rbind, records),
+    replicates = agca_bootstrap_cpp(
+      fit$g,
+      fit$mu,
+      p = fit$p,
+      B = B,
+      ranks = ranks,
+      fixed_anchor = isTRUE(fixed_anchor),
+      anchor_type = anchor_type,
+      anchor_vector = anchor_vector
+    ),
     B = B,
     ranks = ranks,
     fixed_anchor = isTRUE(fixed_anchor)

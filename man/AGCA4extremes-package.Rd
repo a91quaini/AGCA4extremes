@@ -8,6 +8,14 @@
 \description{
 Anchored geodesic component analysis for multivariate extremes.
 }
+\seealso{
+Useful links:
+\itemize{
+  \item \url{https://github.com/a91quaini/AGCA4extremes}
+  \item Report bugs at \url{https://github.com/a91quaini/AGCA4extremes/issues}
+}
+
+}
 \author{
 \strong{Maintainer}: Alberto Quaini \email{alberto91quaini@gmail.com}
 

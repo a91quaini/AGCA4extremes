@@ -101,6 +101,122 @@ BEGIN_RCPP
     return rcpp_result_gen;
 END_RCPP
 }
+// agca_rank_pareto_cpp
+arma::mat agca_rank_pareto_cpp(const arma::mat& x, std::string ties_method);
+RcppExport SEXP _AGCA4extremes_agca_rank_pareto_cpp(SEXP xSEXP, SEXP ties_methodSEXP) {
+BEGIN_RCPP
+    Rcpp::RObject rcpp_result_gen;
+    Rcpp::RNGScope rcpp_rngScope_gen;
+    Rcpp::traits::input_parameter< const arma::mat& >::type x(xSEXP);
+    Rcpp::traits::input_parameter< std::string >::type ties_method(ties_methodSEXP);
+    rcpp_result_gen = Rcpp::wrap(agca_rank_pareto_cpp(x, ties_method));
+    return rcpp_result_gen;
+END_RCPP
+}
+// agca_cdf_to_pareto_cpp
+arma::mat agca_cdf_to_pareto_cpp(const arma::mat& u, double eps);
+RcppExport SEXP _AGCA4extremes_agca_cdf_to_pareto_cpp(SEXP uSEXP, SEXP epsSEXP) {
+BEGIN_RCPP
+    Rcpp::RObject rcpp_result_gen;
+    Rcpp::RNGScope rcpp_rngScope_gen;
+    Rcpp::traits::input_parameter< const arma::mat& >::type u(uSEXP);
+    Rcpp::traits::input_parameter< double >::type eps(epsSEXP);
+    rcpp_result_gen = Rcpp::wrap(agca_cdf_to_pareto_cpp(u, eps));
+    return rcpp_result_gen;
+END_RCPP
+}
+// agca_tail_directions_cpp
+Rcpp::List agca_tail_directions_cpp(const arma::mat& x, int k, double threshold, bool use_k);
+RcppExport SEXP _AGCA4extremes_agca_tail_directions_cpp(SEXP xSEXP, SEXP kSEXP, SEXP thresholdSEXP, SEXP use_kSEXP) {
+BEGIN_RCPP
+    Rcpp::RObject rcpp_result_gen;
+    Rcpp::RNGScope rcpp_rngScope_gen;
+    Rcpp::traits::input_parameter< const arma::mat& >::type x(xSEXP);
+    Rcpp::traits::input_parameter< int >::type k(kSEXP);
+    Rcpp::traits::input_parameter< double >::type threshold(thresholdSEXP);
+    Rcpp::traits::input_parameter< bool >::type use_k(use_kSEXP);
+    rcpp_result_gen = Rcpp::wrap(agca_tail_directions_cpp(x, k, threshold, use_k));
+    return rcpp_result_gen;
+END_RCPP
+}
+// agca_decluster_runs_cpp
+Rcpp::List agca_decluster_runs_cpp(const arma::mat& x, int k, double threshold, bool use_k, int run);
+RcppExport SEXP _AGCA4extremes_agca_decluster_runs_cpp(SEXP xSEXP, SEXP kSEXP, SEXP thresholdSEXP, SEXP use_kSEXP, SEXP runSEXP) {
+BEGIN_RCPP
+    Rcpp::RObject rcpp_result_gen;
+    Rcpp::RNGScope rcpp_rngScope_gen;
+    Rcpp::traits::input_parameter< const arma::mat& >::type x(xSEXP);
+    Rcpp::traits::input_parameter< int >::type k(kSEXP);
+    Rcpp::traits::input_parameter< double >::type threshold(thresholdSEXP);
+    Rcpp::traits::input_parameter< bool >::type use_k(use_kSEXP);
+    Rcpp::traits::input_parameter< int >::type run(runSEXP);
+    rcpp_result_gen = Rcpp::wrap(agca_decluster_runs_cpp(x, k, threshold, use_k, run));
+    return rcpp_result_gen;
+END_RCPP
+}
+// agca_principal_anchor_cpp
+arma::vec agca_principal_anchor_cpp(arma::mat g, bool normalize);
+RcppExport SEXP _AGCA4extremes_agca_principal_anchor_cpp(SEXP gSEXP, SEXP normalizeSEXP) {
+BEGIN_RCPP
+    Rcpp::RObject rcpp_result_gen;
+    Rcpp::RNGScope rcpp_rngScope_gen;
+    Rcpp::traits::input_parameter< arma::mat >::type g(gSEXP);
+    Rcpp::traits::input_parameter< bool >::type normalize(normalizeSEXP);
+    rcpp_result_gen = Rcpp::wrap(agca_principal_anchor_cpp(g, normalize));
+    return rcpp_result_gen;
+END_RCPP
+}
+// agca_frechet_anchor_cpp
+arma::vec agca_frechet_anchor_cpp(arma::mat g, bool normalize, int max_iter, double tol);
+RcppExport SEXP _AGCA4extremes_agca_frechet_anchor_cpp(SEXP gSEXP, SEXP normalizeSEXP, SEXP max_iterSEXP, SEXP tolSEXP) {
+BEGIN_RCPP
+    Rcpp::RObject rcpp_result_gen;
+    Rcpp::RNGScope rcpp_rngScope_gen;
+    Rcpp::traits::input_parameter< arma::mat >::type g(gSEXP);
+    Rcpp::traits::input_parameter< bool >::type normalize(normalizeSEXP);
+    Rcpp::traits::input_parameter< int >::type max_iter(max_iterSEXP);
+    Rcpp::traits::input_parameter< double >::type tol(tolSEXP);
+    rcpp_result_gen = Rcpp::wrap(agca_frechet_anchor_cpp(g, normalize, max_iter, tol));
+    return rcpp_result_gen;
+END_RCPP
+}
+// agca_bootstrap_cpp
+Rcpp::DataFrame agca_bootstrap_cpp(const arma::mat& g, const arma::vec& mu, int p, int B, Rcpp::IntegerVector ranks, bool fixed_anchor, std::string anchor_type, Rcpp::NumericVector anchor_vector);
+RcppExport SEXP _AGCA4extremes_agca_bootstrap_cpp(SEXP gSEXP, SEXP muSEXP, SEXP pSEXP, SEXP BSEXP, SEXP ranksSEXP, SEXP fixed_anchorSEXP, SEXP anchor_typeSEXP, SEXP anchor_vectorSEXP) {
+BEGIN_RCPP
+    Rcpp::RObject rcpp_result_gen;
+    Rcpp::RNGScope rcpp_rngScope_gen;
+    Rcpp::traits::input_parameter< const arma::mat& >::type g(gSEXP);
+    Rcpp::traits::input_parameter< const arma::vec& >::type mu(muSEXP);
+    Rcpp::traits::input_parameter< int >::type p(pSEXP);
+    Rcpp::traits::input_parameter< int >::type B(BSEXP);
+    Rcpp::traits::input_parameter< Rcpp::IntegerVector >::type ranks(ranksSEXP);
+    Rcpp::traits::input_parameter< bool >::type fixed_anchor(fixed_anchorSEXP);
+    Rcpp::traits::input_parameter< std::string >::type anchor_type(anchor_typeSEXP);
+    Rcpp::traits::input_parameter< Rcpp::NumericVector >::type anchor_vector(anchor_vectorSEXP);
+    rcpp_result_gen = Rcpp::wrap(agca_bootstrap_cpp(g, mu, p, B, ranks, fixed_anchor, anchor_type, anchor_vector));
+    return rcpp_result_gen;
+END_RCPP
+}
+// agca_functional_error_cpp
+Rcpp::List agca_functional_error_cpp(const arma::mat& g, const arma::vec& anchor_coordinate, const arma::vec& mu, const arma::mat& scores, const arma::mat& loadings, const arma::mat& weights, Rcpp::IntegerVector ranks, double power, double cap);
+RcppExport SEXP _AGCA4extremes_agca_functional_error_cpp(SEXP gSEXP, SEXP anchor_coordinateSEXP, SEXP muSEXP, SEXP scoresSEXP, SEXP loadingsSEXP, SEXP weightsSEXP, SEXP ranksSEXP, SEXP powerSEXP, SEXP capSEXP) {
+BEGIN_RCPP
+    Rcpp::RObject rcpp_result_gen;
+    Rcpp::RNGScope rcpp_rngScope_gen;
+    Rcpp::traits::input_parameter< const arma::mat& >::type g(gSEXP);
+    Rcpp::traits::input_parameter< const arma::vec& >::type anchor_coordinate(anchor_coordinateSEXP);
+    Rcpp::traits::input_parameter< const arma::vec& >::type mu(muSEXP);
+    Rcpp::traits::input_parameter< const arma::mat& >::type scores(scoresSEXP);
+    Rcpp::traits::input_parameter< const arma::mat& >::type loadings(loadingsSEXP);
+    Rcpp::traits::input_parameter< const arma::mat& >::type weights(weightsSEXP);
+    Rcpp::traits::input_parameter< Rcpp::IntegerVector >::type ranks(ranksSEXP);
+    Rcpp::traits::input_parameter< double >::type power(powerSEXP);
+    Rcpp::traits::input_parameter< double >::type cap(capSEXP);
+    rcpp_result_gen = Rcpp::wrap(agca_functional_error_cpp(g, anchor_coordinate, mu, scores, loadings, weights, ranks, power, cap));
+    return rcpp_result_gen;
+END_RCPP
+}
 
 static const R_CallMethodDef CallEntries[] = {
     {"_AGCA4extremes_agca_row_norms_cpp", (DL_FUNC) &_AGCA4extremes_agca_row_norms_cpp, 1},
@@ -110,6 +226,14 @@ static const R_CallMethodDef CallEntries[] = {
     {"_AGCA4extremes_agca_reconstruct_cpp", (DL_FUNC) &_AGCA4extremes_agca_reconstruct_cpp, 5},
     {"_AGCA4extremes_agca_residual_risk_cpp", (DL_FUNC) &_AGCA4extremes_agca_residual_risk_cpp, 4},
     {"_AGCA4extremes_agca_geodesic_distance_cpp", (DL_FUNC) &_AGCA4extremes_agca_geodesic_distance_cpp, 3},
+    {"_AGCA4extremes_agca_rank_pareto_cpp", (DL_FUNC) &_AGCA4extremes_agca_rank_pareto_cpp, 2},
+    {"_AGCA4extremes_agca_cdf_to_pareto_cpp", (DL_FUNC) &_AGCA4extremes_agca_cdf_to_pareto_cpp, 2},
+    {"_AGCA4extremes_agca_tail_directions_cpp", (DL_FUNC) &_AGCA4extremes_agca_tail_directions_cpp, 4},
+    {"_AGCA4extremes_agca_decluster_runs_cpp", (DL_FUNC) &_AGCA4extremes_agca_decluster_runs_cpp, 5},
+    {"_AGCA4extremes_agca_principal_anchor_cpp", (DL_FUNC) &_AGCA4extremes_agca_principal_anchor_cpp, 2},
+    {"_AGCA4extremes_agca_frechet_anchor_cpp", (DL_FUNC) &_AGCA4extremes_agca_frechet_anchor_cpp, 4},
+    {"_AGCA4extremes_agca_bootstrap_cpp", (DL_FUNC) &_AGCA4extremes_agca_bootstrap_cpp, 8},
+    {"_AGCA4extremes_agca_functional_error_cpp", (DL_FUNC) &_AGCA4extremes_agca_functional_error_cpp, 9},
     {NULL, NULL, 0}
 };
 

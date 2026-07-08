@@ -28,9 +28,9 @@
 #' @return An object of class `"agca_fit"`.
 #' @export
 #' @examples
-#' data(ff_portfolio_losses)
-#' x <- ff_portfolio_losses[seq_len(500), -1]
-#' fit <- agca(x, k = 75, p = 3)
+#' data(agca_10d_simulation)
+#' x <- agca_10d_simulation[paste0("X", 1:10)]
+#' fit <- agca(x, k = 100, p = 3)
 #' fit
 #' agca_rank_summary(fit)
 agca <- function(x, k = NULL, threshold = NULL,
@@ -95,6 +95,10 @@ agca_fit_directions <- function(g, anchor = "canonical", p = NULL, normalize = T
   }
   p <- .validate_rank(p, max_rank)
 
+  colnames(core$g) <- colnames(g)
+  colnames(core$u) <- colnames(g)
+  rownames(core$sigma) <- colnames(g)
+  colnames(core$sigma) <- colnames(g)
   names(core$eigenvalues) <- paste0("AGC", seq_along(core$eigenvalues))
   rownames(core$loadings) <- colnames(core$g)
   colnames(core$loadings) <- paste0("AGC", seq_len(ncol(core$loadings)))

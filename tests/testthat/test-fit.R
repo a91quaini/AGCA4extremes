@@ -52,3 +52,35 @@ test_that("bootstrap and diagnostics return data frames", {
   expect_s3_class(stab, "data.frame")
   expect_true(all(c("rank", "k") %in% names(stab)))
 })
+
+test_that("tail_directions selects top radii in decreasing order", {
+  x <- rbind(
+    c(1, 0, 0),
+    c(0, 2, 0),
+    c(0, 0, 3),
+    c(4, 0, 0)
+  )
+  tail <- tail_directions(x, k = 2)
+
+  expect_equal(tail$index, c(4L, 3L))
+  expect_equal(tail$threshold, 3)
+})
+
+test_that("anchor and functional diagnostics run through C++ kernels", {
+  set.seed(4)
+  x <- matrix(stats::rexp(500), ncol = 5)
+  fit <- agca(x, k = 50, p = 3)
+
+  expect_equal(sqrt(sum(principal_anchor(fit$g)^2)), 1, tolerance = 1e-12)
+  expect_equal(sqrt(sum(frechet_anchor(fit$g)^2)), 1, tolerance = 1e-10)
+
+  weights <- diag(5)[1:3, , drop = FALSE]
+  err <- angular_functional_error(fit, weights = weights, ranks = c(1, 3))
+  expect_s3_class(err, "data.frame")
+  expect_equal(nrow(err), 6)
+  expect_true(all(c("original", "reconstructed", "relative_error") %in% names(err)))
+
+  boot <- bootstrap_agca(fit, B = 3, fixed_anchor = FALSE, anchor = "principal", seed = 5)
+  expect_s3_class(boot$replicates, "data.frame")
+  expect_equal(length(unique(boot$replicates$replicate)), 3)
+})
