@@ -64,8 +64,7 @@ pareto_from_cdf <- function(x, cdf, eps = 1e-12) {
 agca_standardize <- function(x, margin = c("rank_pareto", "pareto", "none"),
                              cdf = NULL, ties_method = "average") {
   margin <- match.arg(margin)
-  switch(
-    margin,
+  switch(margin,
     rank_pareto = rank_pareto(x, ties_method = ties_method),
     pareto = {
       if (is.null(cdf)) {

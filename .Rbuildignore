@@ -1,6 +1,7 @@
 ^AGCA4extremes[.]Rproj$
 ^\.Rproj\.user$
 ^\.github$
+^\.lintr$
 ^cran-comments[.]md$
 ^data-raw$
 ^revdep$

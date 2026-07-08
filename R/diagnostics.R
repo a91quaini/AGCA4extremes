@@ -33,7 +33,7 @@ anchor_sensitivity <- function(x, k, anchors = c("canonical", "frechet", "princi
   out <- lapply(anchors, function(a) {
     fit <- agca(x, k = k, anchor = a, bootstrap = NULL, ...)
     ans <- agca_rank_summary(fit)
-    ans$anchor = a
+    ans$anchor <- a
     ans
   })
   do.call(rbind, out)

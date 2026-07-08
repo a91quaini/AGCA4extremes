@@ -34,15 +34,18 @@ simulate_agca_10d <- function(n = 10000L, seed = NULL, theta = 0.45, tau = 0.25,
       NULL
     }
     set.seed(as.integer(seed))
-    on.exit({
-      if (is.null(old_seed)) {
-        if (exists(".Random.seed", envir = .GlobalEnv, inherits = FALSE)) {
-          rm(".Random.seed", envir = .GlobalEnv)
+    on.exit(
+      {
+        if (is.null(old_seed)) {
+          if (exists(".Random.seed", envir = .GlobalEnv, inherits = FALSE)) {
+            rm(".Random.seed", envir = .GlobalEnv)
+          }
+        } else {
+          assign(".Random.seed", old_seed, envir = .GlobalEnv)
         }
-      } else {
-        assign(".Random.seed", old_seed, envir = .GlobalEnv)
-      }
-    }, add = TRUE)
+      },
+      add = TRUE
+    )
   }
   if (!is.finite(theta) || theta <= 0 || theta >= 1) {
     stop("theta must lie in (0, 1).", call. = FALSE)
@@ -50,8 +53,9 @@ simulate_agca_10d <- function(n = 10000L, seed = NULL, theta = 0.45, tau = 0.25,
   if (!is.finite(tau) || tau < 0) {
     stop("tau must be nonnegative.", call. = FALSE)
   }
-  if (!is.finite(axis9_scale) || axis9_scale <= 0 ||
-      !is.finite(axis10_scale) || axis10_scale <= 0) {
+  invalid_axis_scale <- !is.finite(axis9_scale) || axis9_scale <= 0 ||
+    !is.finite(axis10_scale) || axis10_scale <= 0
+  if (invalid_axis_scale) {
     stop("axis9_scale and axis10_scale must be positive.", call. = FALSE)
   }
 

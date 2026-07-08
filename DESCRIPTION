@@ -13,6 +13,7 @@ License: GPL-3
 URL: https://github.com/a91quaini/AGCA4extremes
 BugReports: https://github.com/a91quaini/AGCA4extremes/issues
 Encoding: UTF-8
+Language: en-US
 Roxygen: list(markdown = TRUE)
 Depends:
     R (>= 4.1.0)

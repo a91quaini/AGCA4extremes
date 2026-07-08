@@ -3,8 +3,12 @@
 #include <RcppArmadillo.h>
 
 #include <algorithm>
+#include <cmath>
+#include <functional>
+#include <limits>
 #include <numeric>
 #include <string>
+#include <utility>
 #include <vector>
 
 // [[Rcpp::depends(RcppArmadillo)]]

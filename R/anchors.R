@@ -50,8 +50,7 @@ resolve_anchor <- function(anchor, g) {
   d <- ncol(g)
   if (is.character(anchor)) {
     anchor <- match.arg(anchor, c("canonical", "frechet", "principal"))
-    return(switch(
-      anchor,
+    return(switch(anchor,
       canonical = canonical_anchor(d),
       frechet = frechet_anchor(g),
       principal = principal_anchor(g)
