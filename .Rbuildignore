@@ -1,0 +1,9 @@
+^AGCA4extremes[.]Rproj$
+^\.Rproj\.user$
+^\.github$
+^cran-comments[.]md$
+^data-raw$
+^revdep$
+^README[.]Rmd$
+^.*[.]Rcheck$
+^.*[.]tar[.]gz$

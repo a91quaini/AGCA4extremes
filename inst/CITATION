@@ -1,0 +1,11 @@
+bibentry(
+  bibtype = "Manual",
+  title = "AGCA4extremes: Anchored Geodesic Component Analysis for Extremes",
+  author = c(person("Alberto", "Quaini")),
+  year = "2026",
+  note = "R package version 0.1.0",
+  textVersion = paste(
+    "Quaini, A. (2026). AGCA4extremes: Anchored Geodesic Component",
+    "Analysis for Extremes. R package version 0.1.0."
+  )
+)
