@@ -1,3 +1,5 @@
+# Author: Alberto Quaini
+
 #' Simulated 10-dimensional AGCA example
 #'
 #' A package-owned simulated heavy-tailed sample from the 10-dimensional design

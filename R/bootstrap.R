@@ -1,3 +1,5 @@
+# Author: Alberto Quaini
+
 #' Nonparametric AGCA bootstrap
 #'
 #' Resamples fitted angular directions and recomputes AGCA diagnostics.

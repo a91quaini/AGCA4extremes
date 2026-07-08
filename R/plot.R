@@ -1,3 +1,5 @@
+# Author: Alberto Quaini
+
 #' Plot AGCA output
 #'
 #' @param x An object returned by [agca()] or [agca_fit_directions()].

@@ -1,3 +1,5 @@
+# Author: Alberto Quaini
+
 #' Canonical anchor
 #'
 #' @param d Ambient dimension.

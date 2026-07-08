@@ -1,3 +1,5 @@
+# Author: Alberto Quaini
+
 #' AGCA4extremes
 #'
 #' Anchored geodesic component analysis for multivariate extremes.

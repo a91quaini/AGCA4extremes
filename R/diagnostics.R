@@ -1,3 +1,5 @@
+# Author: Alberto Quaini
+
 #' Threshold stability diagnostics
 #'
 #' @param x Numeric matrix or data frame.

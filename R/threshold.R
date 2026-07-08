@@ -1,3 +1,5 @@
+# Author: Alberto Quaini
+
 #' Top-k angular directions
 #'
 #' @param x A numeric matrix of standardized observations.

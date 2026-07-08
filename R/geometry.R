@@ -1,3 +1,5 @@
+# Author: Alberto Quaini
+
 #' Row Euclidean norms
 #'
 #' @param x A numeric matrix.

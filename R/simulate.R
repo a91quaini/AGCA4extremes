@@ -1,3 +1,5 @@
+# Author: Alberto Quaini
+
 #' Simulate the 10-dimensional AGCA example design
 #'
 #' Generates the 10-dimensional heavy-tailed design used as the package example.

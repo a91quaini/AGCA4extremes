@@ -1,5 +1,7 @@
 # AGCA4extremes
 
+Author: Alberto Quaini
+
 <!-- badges: start -->
 [![License: GPL v3](https://img.shields.io/badge/License-GPLv3-blue.svg)](https://www.gnu.org/licenses/gpl-3.0)
 [![R-CMD-check](https://github.com/a91quaini/AGCA4extremes/actions/workflows/R-CMD-check.yaml/badge.svg)](https://github.com/a91quaini/AGCA4extremes/actions/workflows/R-CMD-check.yaml)
@@ -133,3 +135,10 @@ plot(boot, statistic = "variation_explained")
 The CRAN package is intentionally lean. Large raw data, generated results,
 figures, and full paper workflows should live in a separate
 `replicateAGCApaper` repository that depends on `AGCA4extremes`.
+
+## Development Assistance
+
+OpenAI Codex was used as a programming assistant during development, mainly for
+code scaffolding, refactoring, documentation, and tests. All methodological
+choices, validation, final code, and responsibility for the package remain with
+the author.

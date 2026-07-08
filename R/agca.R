@@ -1,3 +1,5 @@
+# Author: Alberto Quaini
+
 #' Fit anchored geodesic component analysis
 #'
 #' `agca()` is the main user interface. It standardizes margins, extracts

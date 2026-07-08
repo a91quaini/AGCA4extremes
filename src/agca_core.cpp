@@ -1,3 +1,5 @@
+// Author: Alberto Quaini
+
 #include <RcppArmadillo.h>
 
 #include <algorithm>

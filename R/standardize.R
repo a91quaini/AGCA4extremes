@@ -1,3 +1,5 @@
+# Author: Alberto Quaini
+
 #' Rank-Pareto marginal standardization
 #'
 #' Transforms each margin to empirical standard Pareto scores using

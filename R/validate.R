@@ -1,3 +1,5 @@
+# Author: Alberto Quaini
+
 .as_numeric_matrix <- function(x, name = "x") {
   if (is.data.frame(x)) {
     x <- data.matrix(x)
@@ -22,13 +24,6 @@
     stop(name, " must be an integer between ", lower, " and ", upper, ".", call. = FALSE)
   }
   as.integer(x)
-}
-
-.check_probability <- function(x, name) {
-  if (length(x) != 1L || !is.finite(x) || x <= 0 || x >= 1) {
-    stop(name, " must be a number in (0, 1).", call. = FALSE)
-  }
-  x
 }
 
 .unit_vector <- function(x, name = "x") {
