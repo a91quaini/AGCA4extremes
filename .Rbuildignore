@@ -8,3 +8,4 @@
 ^README[.]Rmd$
 ^.*[.]Rcheck$
 ^.*[.]tar[.]gz$
+^CRAN-SUBMISSION$
