@@ -1,5 +1,10 @@
 # AGCA4extremes
 
+<!-- badges: start -->
+[![License: GPL v3](https://img.shields.io/badge/License-GPLv3-blue.svg)](https://www.gnu.org/licenses/gpl-3.0)
+[![R-CMD-check](https://github.com/a91quaini/AGCA4extremes/actions/workflows/R-CMD-check.yaml/badge.svg)](https://github.com/a91quaini/AGCA4extremes/actions/workflows/R-CMD-check.yaml)
+<!-- badges: end -->
+
 `AGCA4extremes` implements anchored geodesic component analysis (AGCA) for
 multivariate extremes. AGCA summarizes how extreme angular profiles vary around
 a benchmark direction, most often the canonical balanced-dependence anchor.
