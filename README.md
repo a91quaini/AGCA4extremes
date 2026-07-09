@@ -133,8 +133,9 @@ plot(boot, statistic = "variation_explained")
 
 ## Paper Replication
 
-The CRAN package is intentionally lean. Large raw data, generated results,
-figures, and full paper workflows should live in a separate
+The CRAN package is intentionally lean. Replication material for *Anchored
+Geodesic Analysis for Multivariate Extremes*, including large raw data,
+generated results, figures, and full paper workflows, should live in a separate
 `replicateAGCApaper` repository that depends on `AGCA4extremes`.
 
 ## Development Assistance

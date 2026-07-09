@@ -3,10 +3,10 @@
 #' Simulated 10-dimensional AGCA example
 #'
 #' A package-owned simulated heavy-tailed sample from the 10-dimensional design
-#' used in the AGCA paper. Variables `X1`--`X8` share a low-dimensional
-#' logistic-block extremal mechanism. Variables `X9` and `X10` contain
-#' independent Pareto sources, creating near-axis extreme regimes alongside the
-#' shared low-rank angular structure.
+#' used in *Anchored Geodesic Analysis for Multivariate Extremes*. Variables
+#' `X1`--`X8` share a low-dimensional logistic-block extremal mechanism.
+#' Variables `X9` and `X10` contain independent Pareto sources, creating
+#' near-axis extreme regimes alongside the shared low-rank angular structure.
 #'
 #' @format A data frame with 10,000 rows and 11 columns. Columns `X1`, ...,
 #' `X10` are positive heavy-tailed observations. Column `regime` is a latent

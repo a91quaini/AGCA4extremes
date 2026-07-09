@@ -19,9 +19,9 @@ data(agca_10d_simulation)
 }
 \description{
 A package-owned simulated heavy-tailed sample from the 10-dimensional design
-used in the AGCA paper. Variables \code{X1}--\code{X8} share a low-dimensional
-logistic-block extremal mechanism. Variables \code{X9} and \code{X10} contain
-independent Pareto sources, creating near-axis extreme regimes alongside the
-shared low-rank angular structure.
+used in \emph{Anchored Geodesic Analysis for Multivariate Extremes}. Variables
+\code{X1}--\code{X8} share a low-dimensional logistic-block extremal mechanism.
+Variables \code{X9} and \code{X10} contain independent Pareto sources, creating
+near-axis extreme regimes alongside the shared low-rank angular structure.
 }
 \keyword{datasets}
